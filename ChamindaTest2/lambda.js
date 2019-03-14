@@ -15,6 +15,18 @@ exports.handler = function (event, context, callback) {
     }).then((response) => {
         var access_token = "bearer " + response.body.access_token;
         // Insert new API calls here to call with APIX Access Token
+        console.log("---------Calling Banks------------");
+        Swagger.http({
+            url: `https://api.apixplatform.com/sbbank/1.0/bank/banks/banks`,
+            method: 'get',
+            query: { "page": "0", "size": "1" },
+            headers: { "X-Authorization": access_token, "Accept": "*/*" }
+        }).then((response) => {
+            // your code goes here
+            console.log(response.body);
+        }).catch((err) => {
+            // error handling goes here
+        });
 
 
         callback(null, access_token);
