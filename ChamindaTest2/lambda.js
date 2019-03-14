@@ -24,6 +24,19 @@ exports.handler = function (event, context, callback) {
         }).then((response) => {
             // your code goes here
             console.log(response.body);
+            console.log("---------Calling Accounts------------");
+            Swagger.http({
+                url: `https://api.apixplatform.com/sbaccount/1.0/account/accounts/accounts`,
+                method: 'get',
+                query: { "page": "0", "size": "1" },
+                headers: { "X-Authorization": access_token, "Accept": "*/*" }
+            }).then((response) => {
+                // your code goes here
+                console.log(response.body);
+            }).catch((err) => {
+                // error handling goes here
+            });
+            console.log(response.body);
         }).catch((err) => {
             // error handling goes here
         });
