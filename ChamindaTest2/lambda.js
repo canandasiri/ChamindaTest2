@@ -33,6 +33,20 @@ exports.handler = function (event, context, callback) {
             }).then((response) => {
                 // your code goes here
                 console.log(response.body);
+                console.log("---------Calling listPersonTypes------------");
+                Swagger.http({
+                    url: `https://api.apixplatform.com/sbparty/1.0/party/party/person-types`,
+                    method: 'get',
+                    query: { "page": "0", "size": "1" },
+                    headers: { "X-Authorization": access_token, "Accept": "*/*" }
+                }).then((response) => {
+                    // your code goes here
+                    console.log(response.body);
+                }).catch((err) => {
+                    // error handling goes here
+                    console.log("Error");
+                });
+
             }).catch((err) => {
                 // error handling goes here
             });
