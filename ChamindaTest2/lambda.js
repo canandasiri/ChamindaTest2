@@ -9,8 +9,8 @@ exports.handler = function (event, context, callback) {
         query: {},
         headers: { "Accept": "*/*", "Content-Type": "application/json" },
         body: JSON.stringify({
-            "userName": "chamindaa@virtusa.com",
-            "password": "1qaz2wsx@A"
+            "userName": "modelbankuser@inboxbear.com",
+            "password": "1qaz2wsx@"
         })
     }).then((response) => {
         var access_token = "bearer " + response.body.access_token;
